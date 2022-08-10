@@ -9,4 +9,8 @@ public class Example {
     public void doSthElse(){
         System.out.println("Bye");
     }
+
+    public void doSthOneMoreTime(){
+        System.out.println("Bzzzzz...");
+    }
 }
