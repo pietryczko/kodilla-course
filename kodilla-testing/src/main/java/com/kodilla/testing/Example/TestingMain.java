@@ -1,4 +1,4 @@
-package com.kodilla.testing;
+package com.kodilla.testing.Example;
 
 import com.kodilla.testing.calculator.Calculator;
 

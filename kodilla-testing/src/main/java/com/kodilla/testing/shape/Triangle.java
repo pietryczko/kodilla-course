@@ -14,7 +14,7 @@ class Triangle implements Shape {
         return shapeName;
     }
 
-    public int getField(int getField) {
+    public int getField(int fieldSize) {
         return fieldSize;
     }
 }
