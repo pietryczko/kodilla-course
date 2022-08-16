@@ -1,6 +1,6 @@
 package com.kodilla.testing.shape;
-
 import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("TDD: Shape Collector Test Suite")
 public class ShapeCollectorTestSuite {
@@ -32,7 +32,7 @@ public class ShapeCollectorTestSuite {
             //When
             ShapeCollector.addFigure(shape1);
             //Then
-            Assertions.assertEquals(1, ShapeCollector.getFigureSize());
+            assertEquals(1, ShapeCollector.getFigureSize());
         }
 
         @Test
@@ -43,7 +43,7 @@ public class ShapeCollectorTestSuite {
             //When
             ShapeCollector.removeFigure(shape1);
             //Then
-            Assertions.assertEquals(0, ShapeCollector.getFigureSize());
+            assertEquals(0, ShapeCollector.getFigureSize());
         }
     }
 
@@ -58,12 +58,18 @@ public class ShapeCollectorTestSuite {
             //When
             int retrievedFigure = ShapeCollector.getFigure(0);
             //Then
-            Assertions.assertEquals(shape1, retrievedFigure);
+            assertEquals(shape1, retrievedFigure);
         }
 
         @Test
         void testShowFigures() {
-
+            //Given
+            Shape shape1 = new Circle("Circle", 100);
+            ShapeCollector.addFigure(shape1);
+            //When
+            int retrievedFigure = ShapeCollector.getFigure(0);
+            //Then
+            Assertions.assertEquals("Circle 100", ShapeCollector.showFigures());
         }
     }
 }

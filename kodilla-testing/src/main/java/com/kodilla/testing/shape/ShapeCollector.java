@@ -7,7 +7,7 @@ public class ShapeCollector {
     private Shape shape;
     private static List<Shape> figures = new ArrayList<>();
 
-    public ShapeCollector(Shape shape){
+    public ShapeCollector(Shape shape) {
         this.shape = shape;
     }
 
@@ -15,18 +15,20 @@ public class ShapeCollector {
 
     }
 
-    public static boolean removeFigure(Shape shape) {
+    static void removeFigure(Shape shape) {
 
-        return false;
     }
 
     static int getFigure(int n) {
         return 0;
     }
-    static int getFigureSize(){
+
+    static int getFigureSize() {
         return 0;
     }
-    public static void showFigures() {
 
+    static Shape showFigures() {
+        return null;
     }
 }
+
