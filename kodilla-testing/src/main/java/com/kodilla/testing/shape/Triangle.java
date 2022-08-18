@@ -2,19 +2,24 @@ package com.kodilla.testing.shape;
 
 class Triangle implements Shape {
 
-    private String shapeName;
-    private int fieldSize;
+    private double height;
+    private double side;
+    private double fieldSize;
 
-    public Triangle(String shapeName, int fieldSize) {
-        this.shapeName = shapeName;
-        this.fieldSize = fieldSize;
+    public Triangle(double height, double side) {
+        fieldSize = (height*side)/2;
+    }
+    @Override
+    public String toString(){
+        return "Triangle, field size: " + fieldSize;
+    }
+    @Override
+    public String getShapeName() {
+        return "Triangle";
     }
 
-    public String getShapeName(String shapeName) {
-        return shapeName;
-    }
-
-    public int getField(int fieldSize) {
+    @Override
+    public double getFieldSize() {
         return fieldSize;
     }
 }

@@ -2,19 +2,25 @@ package com.kodilla.testing.shape;
 
 class Rectangle implements Shape {
 
-    private final String shapeName;
-    private int fieldSize;
+    private double sideA;
+    private double sideB;
+    private double height;
+    private double fieldSize;
 
-    public Rectangle(String shapeName, int fieldSize) {
-        this.shapeName = shapeName;
-        this.fieldSize = fieldSize;
+    public Rectangle(double sideA, double sideB, double height) {
+        fieldSize = ((sideA + sideB) * height) / 2;
+    }
+    @Override
+    public String toString(){
+        return "Rectangle, field size: " + fieldSize;
+    }
+    @Override
+    public String getShapeName() {
+        return "Rectangle";
     }
 
-    public String getShapeName(String shapeName) {
-        return shapeName;
-    }
-
-    public int getField(int fieldSize) {
+    @Override
+    public double getFieldSize() {
         return fieldSize;
     }
 }

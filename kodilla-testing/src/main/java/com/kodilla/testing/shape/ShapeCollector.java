@@ -4,31 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeCollector {
-    private Shape shape;
-    private static List<Shape> figures = new ArrayList<>();
+    private static final List<Shape> figures = new ArrayList<>();
 
-    public ShapeCollector(Shape shape) {
-        this.shape = shape;
+    int getFiguresListSize() {
+        return figures.size();
     }
 
-    static void addFigure(Shape shape) {
-
+    void addFigure(Shape shape) {
+        figures.add(shape);
     }
 
-    static void removeFigure(Shape shape) {
-
+    void removeFigure(Shape shape) {
+        figures.remove(shape);
     }
 
-    static int getFigure(int n) {
-        return 0;
+    Shape getFigure(int n) {
+        return figures.get(n);
     }
 
-    static int getFigureSize() {
-        return 0;
-    }
-
-    static Shape showFigures() {
-        return null;
+    String showFigures() {
+        return figures.toString();
     }
 }
 
