@@ -1,40 +1,30 @@
 package com.kodilla.testing.weather.stub;
 
+import org.junit.jupiter.api.BeforeEach;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TemperaturesStub implements Temperatures {
+    Map<String, Double> stubResult = new HashMap<>();
+
+    @BeforeEach
+    void setUp() {
+        stubResult.put("Rzeszow", 25.5);
+        stubResult.put("Krakow", 26.2);
+        stubResult.put("Wroclaw", 24.8);
+        stubResult.put("Warszawa", 25.2);
+        stubResult.put("Gdansk", 26.1);
+    }
 
     @Override
     public Map<String, Double> getTemperatures() {
-        Map<String, Double> stubResult = new HashMap<>();
-
-        // dummy data
-        stubResult.put("Rzeszow", 25.5);
-        stubResult.put("Krakow", 26.2);
-        stubResult.put("Wroclaw", 24.8);
-        stubResult.put("Warszawa", 25.2);
-        stubResult.put("Gdansk", 26.1);
-
         return stubResult;
     }
+
     @Override
     public Collection<Double> getValues() {
-        Map<String, Double> stubResult = new HashMap<>();
-
-        // dummy data
-        stubResult.put("Rzeszow", 25.5);
-        stubResult.put("Krakow", 26.2);
-        stubResult.put("Wroclaw", 24.8);
-        stubResult.put("Warszawa", 25.2);
-        stubResult.put("Gdansk", 26.1);
-
         return stubResult.values();
-    }
-
-    @Override
-    public int getMedian() {
-        return 0;
     }
 }

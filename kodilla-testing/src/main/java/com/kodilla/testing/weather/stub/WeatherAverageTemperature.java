@@ -12,11 +12,11 @@ public class WeatherAverageTemperature {
 
     public double calculateAverage() {
         double temperaturesSum = 0.0;
-        double counter = 0.0;
+        int counter = 0;
         for (double temperature : temperatures.getValues()) {
             temperaturesSum += temperature;
             counter++;
         }
-        return temperaturesSum/counter;
+        return temperaturesSum / counter;
     }
 }

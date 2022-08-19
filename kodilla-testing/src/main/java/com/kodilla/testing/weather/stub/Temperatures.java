@@ -6,6 +6,4 @@ import java.util.Map;
 public interface Temperatures {
     Map<String, Double> getTemperatures();
     Collection<Double> getValues();
-    int getMedian();
-
 }
