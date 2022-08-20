@@ -2,7 +2,6 @@ package com.kodilla.testing.shape;
 
 class Square implements Shape {
 
-    private double side;
     private double fieldSize;
 
     public Square(double side) {

@@ -6,7 +6,7 @@ import java.util.List;
 public class ShapeCollector {
     private static final List<Shape> figures = new ArrayList<>();
 
-    int getFiguresListSize() {
+    int getFiguresSize() {
         return figures.size();
     }
 

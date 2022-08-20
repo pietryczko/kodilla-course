@@ -2,9 +2,6 @@ package com.kodilla.testing.shape;
 
 class Rectangle implements Shape {
 
-    private double sideA;
-    private double sideB;
-    private double height;
     private double fieldSize;
 
     public Rectangle(double sideA, double sideB, double height) {
