@@ -1,4 +1,4 @@
-package com.kodilla.testing;
+package com.kodilla.testing.example;
 
 public class Example {
 
