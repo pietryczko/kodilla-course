@@ -7,12 +7,12 @@ public class ArrayOperationsTestSuite {
     @Test
     void testGetAverage() {
         //Given
-        int [] numberArray = {1,2,3,4,5};
+        int [] numberArray = {0,1,4,15};
 
         //When
         double actualAverage = ArrayOperations.getAverage(numberArray);
 
         //Then
-        assertEquals(3, actualAverage);
+        assertEquals(5, actualAverage);
     }
 }
