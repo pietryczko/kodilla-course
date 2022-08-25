@@ -65,7 +65,7 @@ class BookDirectoryTestSuite {
     class testListBookWithCondition {
         @Test
         void testListBooksWithConditionMoreThan20() {
-
+            BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             // Given
             List<Book> resultListOf0Books = new ArrayList<Book>();
             List<Book> resultListOf15Books = generateListOfNBooks(15);
@@ -110,7 +110,7 @@ class BookDirectoryTestSuite {
             //Given
             List<Book> resultListOfBooks = new ArrayList<>();
             LibraryUser libraryUser = new LibraryUser("Jan", "Kowalski", "09876543210");
-
+            BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(resultListOfBooks);
 
             //when
@@ -123,6 +123,7 @@ class BookDirectoryTestSuite {
         @Test
         void testListBookInHandsOf1() {
             //Given
+            BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             List<Book> resultListOfBooks = new ArrayList<>();
             LibraryUser libraryUser = new LibraryUser("Jan", "Kowalski", "09876543210");
             Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
@@ -139,6 +140,7 @@ class BookDirectoryTestSuite {
         @Test
         void testListBookInHandsOf5() {
             //Given
+            BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
             List<Book> resultListOfBooks = new ArrayList<>();
             LibraryUser libraryUser = new LibraryUser("Jan", "Kowalski", "09876543210");
             Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
