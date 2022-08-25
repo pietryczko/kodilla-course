@@ -29,6 +29,5 @@ public class StreamMain {
                 .collect(Collectors.toMap(ForumUser::getID, forumUser -> forumUser));
 
         System.out.println(theResultMapOfUsers);
-
     }
 }
