@@ -20,7 +20,7 @@ public class CollectionTestSuite {
 
     @DisplayName("When create list of numbers, then oddNumberExterminator should return only even numbers")
     @Test
-    private void testOddNumberExterminatorNormalList() {
+    void testOddNumberExterminatorNormalList() {
         //Given
         List<Integer> result = oddNumberExterminator.exterminate(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
 
@@ -34,7 +34,7 @@ public class CollectionTestSuite {
 
     @DisplayName("When create empty list of numbers, then oddNumberExterminator should return empty list")
     @Test
-    private void testOddNumberExterminatorEmptyList() {
+    void testOddNumberExterminatorEmptyList() {
         //Given
         List<Integer> result = oddNumberExterminator.exterminate(Arrays.asList());
 
