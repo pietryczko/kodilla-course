@@ -2,6 +2,7 @@ package com.kodilla.testing.collection;
 
 import java.util.ArrayList;
 import java.util.List;
+public class OddNumberExterminator{
 
     public List<Integer> exterminate(List<Integer> number) {
         List<Integer> numList = new ArrayList<>();
