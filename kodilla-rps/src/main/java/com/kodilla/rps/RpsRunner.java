@@ -15,10 +15,10 @@ public class RpsRunner {
         String name;
         int winRounds;
 
-        String userPlay = "";
-        String comMove = "";
+        String userPlay;
+        String comMove;
 
-        String exitChoice = "";
+        String exitChoice;
 
         System.out.println("Welcome in rock, paper and scissors game! Tell us your name: ");
         name = scanner.next();
@@ -29,12 +29,16 @@ public class RpsRunner {
             System.out.println("How many winnings you want to play?");
 
             winRounds = Integer.parseInt(scanner.next());
+            boolean exitGame = false;
+            while (!exitGame) {
 
-            play:
-            while (!exit) {
-
-                System.out.println("Choose you move: \n 1: Rock \n 2: Paper \n 3: Scissors " +
-                        "\n Press n to restart the game. \n Press x to exit.");
+                System.out.println("""
+                        Choose you move:\s
+                         1: Rock\s
+                         2: Paper\s
+                         3: Scissors\s
+                         Press n to restart the game.\s
+                         Press x to exit.""");
 
                 userPlay = scanner.next();
 
@@ -54,15 +58,23 @@ public class RpsRunner {
                 comMove = comPlay.play();
 
                 winChecker.checkWinner(userPlay, comMove);
-                System.out.println("");
+                System.out.println();
 
-                if (winChecker.getUserPoints() == winRounds) {
-                    System.out.println("User won " + winChecker.getUserPoints() + " - " + winChecker.getComPoints());
-                    break play;
-                } else if (winChecker.getComPoints() == winRounds) {
-                    System.out.println("Computer won " + winChecker.getComPoints() + " - " + winChecker.getUserPoints());
-                    break play;
+                if (winChecker.getUserPoints() == winRounds || winChecker.getComPoints() == winRounds) {
+                    if (winChecker.getUserPoints() == winRounds) {
+                        System.out.println("User win the game!");
+                    } else if (winChecker.getComPoints() == winRounds) {
+                        System.out.println("Computer win the game!");
+                    }
+                    System.out.println("Do you want to play again?");
+                    userPlay = scanner.next();
+                    if (userPlay.equals("y")) {
+                        exitGame = true;
+                    } else {
+                        exit = true;
+                    }
                 }
+
             }
         }
     }
