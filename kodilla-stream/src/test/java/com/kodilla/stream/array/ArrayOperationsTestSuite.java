@@ -14,5 +14,6 @@ public class ArrayOperationsTestSuite {
 
         //Then
         assertEquals(5, actualAverage);
+
     }
 }
