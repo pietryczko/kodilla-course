@@ -9,9 +9,8 @@ public interface ArrayOperations {
         IntStream.range(0, numbers.length)
                 .forEach(System.out::println);
         double averageNumber = IntStream.range(0, numbers.length)
-                .average()
-                .getAsDouble();
-
+                .map(i -> numbers[i])
+                .average().orElse(0);
         return averageNumber;
     }
 }
