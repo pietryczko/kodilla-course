@@ -3,6 +3,8 @@ package com.kodilla.stream.portfolio;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +18,24 @@ class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList>
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        long tasksInProgress = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(Task::getCreated).count();
+
+        inProgressTasks.add(new TaskList("In progress"));
+        long days = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(Task::getCreated)
+                .filter(d -> ChronoUnit.DAYS.between(d, LocalDate.now()))
+                .count();
+
+
     }
+
     @Test
     void testAddTaskListFindLongTasks() {
         //Given
