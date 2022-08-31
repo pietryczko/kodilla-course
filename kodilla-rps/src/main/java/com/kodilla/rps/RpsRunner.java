@@ -1,81 +1,88 @@
 package com.kodilla.rps;
 
+import static com.kodilla.rps.Communicates.SHOW_OPTIONS_COMMUNICATE;
+
 import java.util.Scanner;
 
 public class RpsRunner {
+
+    private Scanner scanner = new Scanner(System.in);
+    private WinChecker winChecker = new WinChecker();
+    private ExitMenu exitMenu = new ExitMenu();
+    private MoveType moveType = new MoveType();
+
+    private boolean exitGame = false;
+    private boolean exitRound = false;
+
+    private int winRounds;
+    private String exitChoice;
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        WinChecker winChecker = new WinChecker();
-        ExitMenu exitMenu = new ExitMenu();
-        ComPlay comPlay = new ComPlay();
+        RpsRunner rpsRunner = new RpsRunner();
+        rpsRunner.play();
+    }
 
+    private void play() {
+        invitePlayer();
 
-        boolean exit = false;
+        while (!exitGame) {
+            playGame();
+        }
+    }
 
-        String name;
-        int winRounds;
+    private void playGame(){
+        System.out.println("How many winnings you want to play?");
 
-        String userPlay;
-        String comMove;
+        winRounds = scanner.nextInt();
+        boolean exitGame = false;
 
-        String exitChoice;
+        while (!exitGame) {
+            playRound();
+        }
+    }
 
-        System.out.println("Welcome in rock, paper and scissors game! Tell us your name: ");
-        name = scanner.next();
-        System.out.println("Hi " + name + "!");
+    private void playRound(){
+        System.out.println(SHOW_OPTIONS_COMMUNICATE);
 
-        game:
-        while (!exit) {
-            System.out.println("How many winnings you want to play?");
+        String userPlay = scanner.next();
 
-            winRounds = Integer.parseInt(scanner.next());
-            boolean exitGame = false;
-            while (!exitGame) {
-
-                System.out.println("""
-                        Choose you move:\s
-                         1: Rock\s
-                         2: Paper\s
-                         3: Scissors\s
-                         Press n to restart the game.\s
-                         Press x to exit.""");
-
+        if (userPlay.equals("x") || userPlay.equals("n")) {
+            System.out.println("Are you sure? Press y to yes, n to no:");
+            exitChoice = scanner.next();
+            exitMenu.exit(userPlay, exitChoice);
+            if (exitMenu.getExit()) {
+                return;
+            } else if (exitMenu.getPlayAgain()) {
+                return;
+            } else {
                 userPlay = scanner.next();
-
-                if (userPlay.equals("x") || userPlay.equals("n")) {
-                    System.out.println("Are you sure? Press y to yes, n to no:");
-                    exitChoice = scanner.next();
-                    exitMenu.exit(userPlay, exitChoice);
-                    if (exitMenu.getExit()) {
-                        break game;
-                    } else if (exitMenu.getPlayAgain()) {
-                        break;
-                    } else {
-                        userPlay = scanner.next();
-                    }
-                }
-
-                comMove = comPlay.play();
-
-                winChecker.checkWinner(userPlay, comMove);
-                System.out.println();
-
-                if (winChecker.getUserPoints() == winRounds || winChecker.getComPoints() == winRounds) {
-                    if (winChecker.getUserPoints() == winRounds) {
-                        System.out.println("User win the game!");
-                    } else if (winChecker.getComPoints() == winRounds) {
-                        System.out.println("Computer win the game!");
-                    }
-                    System.out.println("Do you want to play again?");
-                    userPlay = scanner.next();
-                    if (userPlay.equals("y")) {
-                        exitGame = true;
-                    } else {
-                        exit = true;
-                    }
-                }
-
             }
         }
+
+        MoveType userMove = MoveType.from(userPlay);
+        MoveType comMove = moveType.play();
+
+        winChecker.checkWinner(userMove, comMove);
+        System.out.println();
+
+        if (winChecker.getUserPoints() == winRounds || winChecker.getComPoints() == winRounds) {
+            if (winChecker.getUserPoints() == winRounds) {
+                System.out.println("User win the game!");
+            } else if (winChecker.getComPoints() == winRounds) {
+                System.out.println("Computer win the game!");
+            }
+            System.out.println("Do you want to play again?");
+            userPlay = scanner.next();
+            if (userPlay.equals("y")) {
+                exitRound = true;
+            } else {
+                exitGame = true;
+            }
+        }
+    }
+
+    private void invitePlayer() {
+        System.out.println("Welcome in rock, paper and scissors game! Tell us your name: ");
+        System.out.println("Hi " + scanner.next() + "!");
     }
 }

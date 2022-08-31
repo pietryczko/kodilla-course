@@ -1,15 +1,20 @@
 package com.kodilla.rps;
 
+import static com.kodilla.rps.MoveType.PAPER;
+import static com.kodilla.rps.MoveType.ROCK;
+
 public class WinChecker {
 
     private int comPoints = 0;
     private int userPoints = 0;
 
-    void checkWinner(String userPlay, String comPlay) {
+    void checkWinner(MoveType userMove, MoveType compMove) {
 
-        if (comPlay.equals("rock") && userPlay.equals("3")) {
+        if (compMove == ROCK && userMove == PAPER) {
             System.out.println("Computer win!");
             comPoints++;
+
+
         } else if (comPlay.equals("rock") && userPlay.equals("2")) {
             System.out.println("User win!");
             userPoints++;

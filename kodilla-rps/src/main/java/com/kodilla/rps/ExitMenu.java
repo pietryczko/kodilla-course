@@ -1,5 +1,6 @@
 package com.kodilla.rps;
 
+import static com.kodilla.rps.Communicates.SHOW_OPTIONS_COMMUNICATE;
 
 public class ExitMenu {
     private boolean exit;
@@ -12,26 +13,14 @@ public class ExitMenu {
             if (exitChoice.equals("y")) {
                 exit = true;
             } else if (exitChoice.equals("n")) {
-                System.out.println("""
-                        Choose you move:\s
-                         1: Rock\s
-                         2: Paper\s
-                         3: Scissors\s
-                         Press n to restart the game.\s
-                         Press x to exit.""");
+                System.out.println(SHOW_OPTIONS_COMMUNICATE);
             }
 
         } else if (userPlay.equals("n")) {
             if (exitChoice.equals("y")) {
                 playAgain = true;
             } else {
-                System.out.println("""
-                        Choose you move:\s
-                         1: Rock\s
-                         2: Paper\s
-                         3: Scissors\s
-                         Press n to restart the game.\s
-                         Press x to exit.""");
+                System.out.println(SHOW_OPTIONS_COMMUNICATE);
             }
         }
 
