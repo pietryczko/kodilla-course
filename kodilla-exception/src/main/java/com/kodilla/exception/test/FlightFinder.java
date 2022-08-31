@@ -4,28 +4,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FlightFinder {
-    private Map<String, Boolean> flights = new HashMap<>();
+    private final Map<String, Boolean> flights;
+    public FlightFinder (){
 
-    void findFlight(Flight flight) throws RoteNotFoundException {
+        flights = new HashMap<>();
         flights.put("Berlin", false);
         flights.put("New York", false);
         flights.put("London", true);
         flights.put("Warsaw", true);
         flights.put("Moscow", true);
+    }
 
-        if (flights.containsKey(flight.getArrivalAirport()) && flights.containsValue(true)) {
-            System.out.println("Airport and connection is available!");
-        } else if (flights.containsKey(flight.getArrivalAirport()) && flights.containsValue(false)){
-            System.out.println("Airport is available but no connection to it.");
+    void findFlight(Flight flight) throws RoteNotFoundException {
+
+
+        if (!flights.containsKey(flight.getArrivalAirport())) {
+            throw new RoteNotFoundException("Not find airport");
+        }
+        boolean flightIsAva = flights.get(flight.getArrivalAirport());
+
+        if (flightIsAva) {
+            System.out.println("Flight is available");
         } else {
-            throw new RoteNotFoundException("Flight not found");
+            throw new RoteNotFoundException("No connection");
         }
     }
 
     public static void main(String[] args) {
         FlightFinder flightFinder = new FlightFinder();
 
-        Flight flight1 = new Flight("Berlin", "New York");
+        Flight flight1 = new Flight("Berlin", "Moscow");
 
         try {
             flightFinder.findFlight(flight1);
