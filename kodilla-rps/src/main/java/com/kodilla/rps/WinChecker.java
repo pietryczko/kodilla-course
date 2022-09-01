@@ -43,6 +43,7 @@ public class WinChecker {
 
         if (compMove == userMove) {
             System.out.println("Draw!");
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
         }
     }
     int getComPoints() {

@@ -15,7 +15,6 @@ public class RpsRunner {
     private boolean exitRound = false;
 
     private int winRounds;
-    private String exitChoice;
 
     public static void main(String[] args) {
         RpsRunner rpsRunner = new RpsRunner();
@@ -32,12 +31,12 @@ public class RpsRunner {
 
     private void playGame() {
         System.out.println("How many wins do you want to play for?");
-
         winRounds = scanner.nextInt();
-        boolean exitGame = false;
+        exitRound = false;
 
-        while (!exitGame) {
+        while (!exitRound) {
             playRound();
+            exitRound = true;
         }
     }
 
@@ -46,10 +45,17 @@ public class RpsRunner {
         System.out.println(SHOW_OPTIONS_COMMUNICATE);
         String userPlay = scanner.next();
 
-        MoveType userMove = MoveType.from(userPlay);
-        MoveType comMove = MoveType.from(String.valueOf(random.nextInt(3) + 1));
+        if (userPlay.equals("x") || userPlay.equals("r")) {
+            exitMenu.exit(userPlay);
+            if (exitMenu.getExitRound()) {
+                return;
+            }
+        } else {
+            MoveType userMove = MoveType.from(userPlay);
+            MoveType comMove = MoveType.from(String.valueOf(random.nextInt(3) + 1));
+            winChecker.checkWinner(userMove, comMove);
+        }
 
-        winChecker.checkWinner(userMove, comMove);
         System.out.println();
 
         if (winChecker.getUserPoints() == winRounds || winChecker.getComPoints() == winRounds) {

@@ -17,10 +17,6 @@ public enum MoveType {
                 return PAPER;
             case "3":
                 return SCISSORS;
-            case "x":
-                exitMenu.exit();
-            case "n":
-                return
             default:
                 throw new IllegalArgumentException("Not recognized: " + play);
         }
