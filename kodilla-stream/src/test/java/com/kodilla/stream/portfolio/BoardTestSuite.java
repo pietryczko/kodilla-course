@@ -23,17 +23,21 @@ class BoardTestSuite {
         long tasksInProgress = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCreated).count();
+                .map(Task::getCreated)
+                .count();
 
         inProgressTasks.add(new TaskList("In progress"));
         long days = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(Task::getCreated)
-                .filter(d -> ChronoUnit.DAYS.between(d, LocalDate.now()))
+                .map(d -> ChronoUnit.DAYS.between(d, LocalDate.now()))
                 .count();
 
+        double average = (double) days / tasksInProgress;
 
+        //Then
+        assertEquals(1, average);
     }
 
     @Test
