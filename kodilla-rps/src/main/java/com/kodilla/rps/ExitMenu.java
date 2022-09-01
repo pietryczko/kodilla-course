@@ -1,36 +1,28 @@
 package com.kodilla.rps;
 
+import java.util.Scanner;
+
 import static com.kodilla.rps.Communicates.SHOW_OPTIONS_COMMUNICATE;
 
 public class ExitMenu {
-    private boolean exit;
-    private boolean playAgain;
+    Scanner scanner = new Scanner(System.in);
+    String confirmation = scanner.next();
 
-    void exit(String userPlay, String exitChoice) {
+    void exit(String userPlay) {
 
         //Exit
-        if (userPlay.equals("x")) {
-            if (exitChoice.equals("y")) {
-                exit = true;
-            } else if (exitChoice.equals("n")) {
-                System.out.println(SHOW_OPTIONS_COMMUNICATE);
-            }
-
-        } else if (userPlay.equals("n")) {
-            if (exitChoice.equals("y")) {
-                playAgain = true;
-            } else {
-                System.out.println(SHOW_OPTIONS_COMMUNICATE);
-            }
+        if (confirmation.equals("y")) {
+            exit = true;
+        } else if (confirmation.equals("n")) {
+            System.out.println(SHOW_OPTIONS_COMMUNICATE);
         }
-
     }
 
-    boolean getExit() {
-        return exit;
-    }
-
-    boolean getPlayAgain() {
-        return playAgain;
+    void playAgain(String userPlay) {
+        if (confirmation.equals("y")) {
+            exit = true;
+        } else if (confirmation.equals("n")) {
+            System.out.println(SHOW_OPTIONS_COMMUNICATE);
+        }
     }
 }

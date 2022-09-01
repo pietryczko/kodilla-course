@@ -1,16 +1,16 @@
 package com.kodilla.rps;
 
-import static com.kodilla.rps.Communicates.SHOW_OPTIONS_COMMUNICATE;
-
+import java.util.Random;
 import java.util.Scanner;
+
+import static com.kodilla.rps.Communicates.SHOW_OPTIONS_COMMUNICATE;
 
 public class RpsRunner {
 
     private Scanner scanner = new Scanner(System.in);
+    private Random random = new Random();
     private WinChecker winChecker = new WinChecker();
     private ExitMenu exitMenu = new ExitMenu();
-    private MoveType moveType = new MoveType();
-
     private boolean exitGame = false;
     private boolean exitRound = false;
 
@@ -30,8 +30,8 @@ public class RpsRunner {
         }
     }
 
-    private void playGame(){
-        System.out.println("How many winnings you want to play?");
+    private void playGame() {
+        System.out.println("How many wins do you want to play for?");
 
         winRounds = scanner.nextInt();
         boolean exitGame = false;
@@ -41,26 +41,13 @@ public class RpsRunner {
         }
     }
 
-    private void playRound(){
-        System.out.println(SHOW_OPTIONS_COMMUNICATE);
+    private void playRound() {
 
+        System.out.println(SHOW_OPTIONS_COMMUNICATE);
         String userPlay = scanner.next();
 
-        if (userPlay.equals("x") || userPlay.equals("n")) {
-            System.out.println("Are you sure? Press y to yes, n to no:");
-            exitChoice = scanner.next();
-            exitMenu.exit(userPlay, exitChoice);
-            if (exitMenu.getExit()) {
-                return;
-            } else if (exitMenu.getPlayAgain()) {
-                return;
-            } else {
-                userPlay = scanner.next();
-            }
-        }
-
         MoveType userMove = MoveType.from(userPlay);
-        MoveType comMove = moveType.play();
+        MoveType comMove = MoveType.from(String.valueOf(random.nextInt(3) + 1));
 
         winChecker.checkWinner(userMove, comMove);
         System.out.println();

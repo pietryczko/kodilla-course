@@ -1,7 +1,6 @@
 package com.kodilla.rps;
 
-import static com.kodilla.rps.MoveType.PAPER;
-import static com.kodilla.rps.MoveType.ROCK;
+import static com.kodilla.rps.MoveType.*;
 
 public class WinChecker {
 
@@ -10,38 +9,42 @@ public class WinChecker {
 
     void checkWinner(MoveType userMove, MoveType compMove) {
 
-        if (compMove == ROCK && userMove == PAPER) {
+        System.out.println("User move: " + userMove + "              Computer Move: " + compMove);
+
+        if (compMove == ROCK && userMove == SCISSORS) {
             System.out.println("Computer win!");
             comPoints++;
-
-
-        } else if (comPlay.equals("rock") && userPlay.equals("2")) {
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
+        } else if (compMove == ROCK && userMove == PAPER) {
             System.out.println("User win!");
             userPoints++;
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
         }
 
-        if (comPlay.equals("paper") && userPlay.equals("1")) {
+        if (compMove == PAPER && userMove == ROCK) {
             System.out.println("Computer win!");
             comPoints++;
-        } else if (comPlay.equals("paper") && userPlay.equals("3")) {
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
+        } else if (compMove == PAPER && userMove == SCISSORS) {
             System.out.println("User win!");
             userPoints++;
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
         }
 
-        if (comPlay.equals("scissors") && userPlay.equals("2")) {
+        if (compMove == SCISSORS && userMove == PAPER) {
             System.out.println("Computer win!");
             comPoints++;
-        } else if (comPlay.equals("scissors") && userPlay.equals("1")) {
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
+        } else if (compMove == SCISSORS && userMove == ROCK) {
             System.out.println("User win!");
             userPoints++;
+            System.out.println("Current score: " + userPoints + "-" + comPoints);
         }
 
-        if ((comPlay.equals("rock") && userPlay.equals("1")) || (comPlay.equals("paper") && userPlay.equals("2"))
-                || (comPlay.equals("scissors") && userPlay.equals("3"))) {
+        if (compMove == userMove) {
             System.out.println("Draw!");
         }
     }
-
     int getComPoints() {
         return comPoints;
     }
