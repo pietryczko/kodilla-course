@@ -3,11 +3,11 @@ package com.kodilla.rps;
 import java.util.Scanner;
 
 public class ExitMenu {
+    private final WinChecker winChecker = new WinChecker();
     private final Scanner scanner = new Scanner(System.in);
-    private boolean exitRound = false;
 
 
-    void exit(String userPlay) {
+    void exit(String userPlay) throws IllegalArgumentException {
         System.out.println("Are you sure? Press y to yes / Press n to no:");
         String confirmation = scanner.next();
 
@@ -15,20 +15,15 @@ public class ExitMenu {
             if (confirmation.equals("y")) {
                 System.out.println("exiting game");
                 System.exit(0);
-            } else if (!confirmation.equals("n")){
+            } else if (!confirmation.equals("n")) {
                 throw new IllegalArgumentException("Not recognized: " + userPlay);
             }
         } else if (userPlay.equals("r")) {
             if (confirmation.equals("y")) {
-                exitRound = true;
-            } else if (!confirmation.equals("n")){
+                winChecker.setPlayAgainTrue();
+            } else if (!confirmation.equals("n")) {
                 throw new IllegalArgumentException("Not recognized: " + userPlay);
             }
-        } else {
-            throw new IllegalArgumentException("Not recognized: " + userPlay);
-        }
-    }
-    boolean getExitRound() {
-        return exitRound;
+        } else throw new IllegalArgumentException("Not recognized: " + userPlay);
     }
 }

@@ -1,13 +1,16 @@
 package com.kodilla.rps;
 
+import java.util.Scanner;
+
 import static com.kodilla.rps.MoveType.*;
 
 public class WinChecker {
-
+    private final Scanner scanner = new Scanner(System.in);
+    private boolean playAgain = false;
     private int comPoints = 0;
     private int userPoints = 0;
 
-    void checkWinner(MoveType userMove, MoveType compMove) {
+    void checkWinner(MoveType userMove, MoveType compMove, int winRounds) {
 
         System.out.println("User move: " + userMove + "              Computer Move: " + compMove);
 
@@ -45,12 +48,37 @@ public class WinChecker {
             System.out.println("Draw!");
             System.out.println("Current score: " + userPoints + "-" + comPoints);
         }
-    }
-    int getComPoints() {
-        return comPoints;
+
+        if (userPoints == winRounds || comPoints == winRounds) {
+            if (userPoints == winRounds) {
+                System.out.println("User win the game!");
+            } else {
+                System.out.println("Computer win the game!");
+            }
+
+            System.out.println("Do you want to play again?");
+            String userPlay = scanner.next();
+            if (userPlay.equals("y")) {
+                playAgain = true;
+            } else {
+                System.exit(0);
+            }
+        }
+        if (playAgain) {
+            userPoints = 0;
+            comPoints = 0;
+        }
     }
 
-    int getUserPoints() {
-        return userPoints;
+    void setPlayAgainFalse() {
+        playAgain = false;
+    }
+
+    void setPlayAgainTrue() {
+        playAgain = true;
+    }
+
+    boolean playAgain() {
+        return playAgain;
     }
 }
