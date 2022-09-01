@@ -1,26 +1,68 @@
 package com.kodilla.testing.forum.statistics;
 
 public class ForumStatistics {
-    private Statistics Statistics;
+    private int usersQuantity;
+    private int postsCount;
+    private int commentsCount;
+    private double postsPerUser;
+    private double commentsPerUser;
+    private double commentsPerPost;
 
     public ForumStatistics(Statistics statistics) {
-        this.Statistics = statistics;
+
     }
 
-    String calculateAdvStatistics(Statistics statistics) {
-        int usersQuantity = Statistics.usersNames().size();
-        int postsCount = Statistics.postsCount();
-        int commentsCount = Statistics.commentsCount();
-        int postsPerUser = Statistics.postsCount() / usersQuantity;
-        int commentsPerUser = Statistics.commentsCount() / usersQuantity;
-        int commentsPerPost = Statistics.commentsCount() / Statistics.postsCount();
+    void calculateAdvStatistics(Statistics statistics) {
+        usersQuantity = statistics.usersNames().size();
+        postsCount =  statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+        postsPerUser = (double) statistics.postsCount() / usersQuantity;
+        commentsPerUser = (double) statistics.commentsCount() / usersQuantity;
+        commentsPerPost = (double) statistics.commentsCount() / statistics.postsCount();
+    }
 
+    public int getUsersQuantity() {
+        return usersQuantity;
+    }
+
+    public int getPostsCount() {
+        return postsCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public double getPostsPerUser() {
+        return postsPerUser;
+    }
+
+    public double getCommentsPerUser() {
+        return commentsPerUser;
+    }
+
+    public double getCommentsPerPost() {
+        return commentsPerPost;
+    }
+
+    public void setUsersQuantity(int usersQuantity) {
+        this.usersQuantity = usersQuantity;
+    }
+
+    public void setPostsCount(int postsCount) {
+        this.postsCount = postsCount;
+    }
+
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
+    }
+
+    public String showStatistics() {
         return "Forum have " + usersQuantity + " users; " + postsCount + " posts; " + commentsCount + " comments." + "\r" +
                 "Average value of posts per user " + postsPerUser + "\r" +
                 "Average value of comments per user " + commentsPerUser + "\r" +
                 "Average value of comments per post " + commentsPerPost;
     }
-
 }
 
 
