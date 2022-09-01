@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class FlightFinder {
     private final Map<String, Boolean> flights;
-    public FlightFinder (){
 
+    public FlightFinder() {
         flights = new HashMap<>();
         flights.put("Berlin", false);
         flights.put("New York", false);
@@ -16,14 +16,12 @@ public class FlightFinder {
     }
 
     void findFlight(Flight flight) throws RoteNotFoundException {
-
-
         if (!flights.containsKey(flight.getArrivalAirport())) {
             throw new RoteNotFoundException("Not find airport");
         }
-        boolean flightIsAva = flights.get(flight.getArrivalAirport());
+        boolean flightIsAvailable = flights.get(flight.getArrivalAirport());
 
-        if (flightIsAva) {
+        if (flightIsAvailable) {
             System.out.println("Flight is available");
         } else {
             throw new RoteNotFoundException("No connection");
@@ -32,17 +30,11 @@ public class FlightFinder {
 
     public static void main(String[] args) {
         FlightFinder flightFinder = new FlightFinder();
-
         Flight flight1 = new Flight("Berlin", "Moscow");
-
         try {
             flightFinder.findFlight(flight1);
         } catch (RoteNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
-
-
     }
 }
