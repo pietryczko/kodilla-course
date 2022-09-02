@@ -74,10 +74,6 @@ public class WinChecker {
         playAgain = false;
     }
 
-    void setPlayAgainTrue() {
-        playAgain = true;
-    }
-
     boolean playAgain() {
         return playAgain;
     }

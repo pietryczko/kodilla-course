@@ -4,6 +4,7 @@ public class Communicates {
 
     public static final String SHOW_OPTIONS_COMMUNICATE =
             """
+                    
                     Choose you move:
                     1: Rocks
                     2: Papers

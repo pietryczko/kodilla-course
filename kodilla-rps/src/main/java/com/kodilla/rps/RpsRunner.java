@@ -36,8 +36,9 @@ public class RpsRunner {
 
         while (!exitRound) {
             playRound();
-            if (winChecker.playAgain()) {
+            if (winChecker.playAgain() || exitMenu.getRestart()) {
                 winChecker.setPlayAgainFalse();
+                exitMenu.setRestartFalse();
                 break;
             }
         }
@@ -52,10 +53,11 @@ public class RpsRunner {
             exitMenu.exit(userPlay);
         } else {
             MoveType userMove = MoveType.from(userPlay);
-            MoveType comMove = MoveType.from("1");
+            MoveType comMove = MoveType.from(String.valueOf(random.nextInt(3) + 1));
             winChecker.checkWinner(userMove, comMove, winRounds);
         }
     }
+
     private void invitePlayer() {
         System.out.println("Welcome in rock, paper and scissors game! Tell us your name: ");
         System.out.println("Hi " + scanner.next() + "!");
