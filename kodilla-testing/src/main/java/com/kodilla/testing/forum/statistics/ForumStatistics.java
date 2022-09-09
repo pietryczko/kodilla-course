@@ -14,7 +14,7 @@ public class ForumStatistics {
 
     void calculateAdvStatistics(Statistics statistics) {
         usersQuantity = statistics.usersNames().size();
-        postsCount =  statistics.postsCount();
+        postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
         postsPerUser = (double) statistics.postsCount() / usersQuantity;
         commentsPerUser = (double) statistics.commentsCount() / usersQuantity;
@@ -45,24 +45,8 @@ public class ForumStatistics {
         return commentsPerPost;
     }
 
-    public void setUsersQuantity(int usersQuantity) {
-        this.usersQuantity = usersQuantity;
-    }
-
-    public void setPostsCount(int postsCount) {
-        this.postsCount = postsCount;
-    }
-
-    public void setCommentsCount(int commentsCount) {
-        this.commentsCount = commentsCount;
-    }
-
     public String showStatistics() {
-        return "Forum have " + usersQuantity + " users; " + postsCount + " posts; " + commentsCount + " comments." + "\r" +
-                "Average value of posts per user " + postsPerUser + "\r" +
-                "Average value of comments per user " + commentsPerUser + "\r" +
-                "Average value of comments per post " + commentsPerPost;
+        return "Posts per user: " + postsPerUser + ", Comments per user: " + commentsPerUser + ", Comments per post: " + commentsPerPost;
     }
 }
-
 
