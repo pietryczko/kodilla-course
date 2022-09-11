@@ -1,26 +1,52 @@
 package com.kodilla.testing.forum.statistics;
 
 public class ForumStatistics {
-    private Statistics statistics;
+    private int usersQuantity;
+    private int postsCount;
+    private int commentsCount;
+    private double postsPerUser;
+    private double commentsPerUser;
+    private double commentsPerPost;
 
     public ForumStatistics(Statistics statistics) {
-        this.statistics = statistics;
+
     }
 
-    private String calculateAdvStatistics() {
-        int userNumber = this.statistics.usersNames().size();
-        int postsCount = this.statistics.postsCount();
-        int commentsCount = this.statistics.commentsCount();
-        int postsPerUser = this.statistics.postsCount() / userNumber;
-        double commentsPerUser = (double) this.statistics.commentsCount() / userNumber;
-        int commentsPerPost = this.statistics.commentsCount() / this.statistics.postsCount();
-
-        return "Forum have " + userNumber + " users; " + postsCount + " posts; " + commentsCount + " comments." + "\r" +
-                "Average value of posts per user " + postsPerUser + "\r" +
-                "Average value of comments per user " + commentsPerUser + "\r" +
-                "Average value of comments per post " + commentsPerPost;
+    void calculateAdvStatistics(Statistics statistics) {
+        usersQuantity = statistics.usersNames().size();
+        postsCount = statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+        postsPerUser = (double) statistics.postsCount() / usersQuantity;
+        commentsPerUser = (double) statistics.commentsCount() / usersQuantity;
+        commentsPerPost = (double) statistics.commentsCount() / statistics.postsCount();
     }
 
+    public int getUsersQuantity() {
+        return usersQuantity;
+    }
+
+    public int getPostsCount() {
+        return postsCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public double getPostsPerUser() {
+        return postsPerUser;
+    }
+
+    public double getCommentsPerUser() {
+        return commentsPerUser;
+    }
+
+    public double getCommentsPerPost() {
+        return commentsPerPost;
+    }
+
+    public String showStatistics() {
+        return "Posts per user: " + postsPerUser + ", Comments per user: " + commentsPerUser + ", Comments per post: " + commentsPerPost;
+    }
 }
-
 
