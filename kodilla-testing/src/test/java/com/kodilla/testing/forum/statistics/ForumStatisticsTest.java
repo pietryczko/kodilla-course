@@ -14,17 +14,10 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ForumStatisticsTest {
-    private List<String> generateUsersList(int usersQuantity) {
-        List<String> usersList = new ArrayList<>();
-        for (int n = 1; n <= usersQuantity; n++) {
-            String theUser = "Name " + String.valueOf(n);
-            usersList.add(theUser);
-        }
-        return usersList;
-    }
-
     @Mock
     private Statistics statisticsMock;
+    private ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+    private String result;
 
     @BeforeEach
     void beforeEach() {
@@ -32,9 +25,6 @@ public class ForumStatisticsTest {
         when(statisticsMock.postsCount()).thenReturn(10);
         when(statisticsMock.usersNames()).thenReturn(List.of("John", "Jack", "James", "George"));
     }
-
-    private ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
-    private String result;
 
     @Test
     void testAdvStatistics() {
@@ -152,4 +142,12 @@ public class ForumStatisticsTest {
         assertEquals("Posts per user: " + 0.1 + ", Comments per user: " + 0.1 + ", Comments per post: " + 1.0, result);
     }
 
+    private List<String> generateUsersList(int usersQuantity) {
+        List<String> usersList = new ArrayList<>();
+        for (int n = 1; n <= usersQuantity; n++) {
+            String theUser = "Name " + String.valueOf(n);
+            usersList.add(theUser);
+        }
+        return usersList;
+    }
 }

@@ -8,10 +8,6 @@ public class ForumStatistics {
     private double commentsPerUser;
     private double commentsPerPost;
 
-    public ForumStatistics(Statistics statistics) {
-
-    }
-
     void calculateAdvStatistics(Statistics statistics) {
         usersQuantity = statistics.usersNames().size();
         postsCount = statistics.postsCount();
