@@ -1,3 +1,5 @@
+package challenges;
+
 public class RentalProcessor {
 
     private InformationService informationService;
