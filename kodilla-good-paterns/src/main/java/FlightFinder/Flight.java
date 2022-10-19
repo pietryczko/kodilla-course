@@ -4,6 +4,7 @@ public class Flight {
     private City cityFrom;
     private City cityTo;
 
+
     public Flight(City cityFrom, City cityTo) {
         this.cityFrom = cityFrom;
         this.cityTo = cityTo;
@@ -15,5 +16,13 @@ public class Flight {
 
     public City getCityTo() {
         return cityTo;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "cityFrom=" + cityFrom +
+                ", cityTo=" + cityTo +
+                '}';
     }
 }

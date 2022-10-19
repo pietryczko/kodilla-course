@@ -6,11 +6,11 @@ public class FlightFinderProcessor {
         flightsRepo.addFlight("Wroclaw", "Krakow");
         flightsRepo.addFlight("Krakow", "Wroclaw");
 
-        String expectedFlightFrom = "Wroclaw";
-        String expectedFlightTo = "Wroclaw";
+        City expectedFlightFrom = new City("Wroclaw");
+        City expectedFlightTo = new City("Krakow");
 
         flightsRepo.getFlights().stream()
-                .filter(flight -> flight.getCityTo().equals(expectedFlightFrom))
+                .filter(flight -> flight.getCityFrom().equals(expectedFlightFrom))
                 .filter(flight -> flight.getCityTo().equals(expectedFlightTo))
                 .forEach(System.out::println);
     }
