@@ -3,12 +3,20 @@ package challenges;
 import java.util.Objects;
 
 public class User {
-    private String name;
-    private int ID;
+    private final String name;
+    private final int id;
 
     public User(String name, int ID) {
         this.name = name;
-        this.ID = ID;
+        this.id = ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -16,19 +24,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return ID == user.ID && name.equals(user.name);
+        return id == user.id && name.equals(user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, ID);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getID() {
-        return ID;
+        return Objects.hash(name, id);
     }
 }

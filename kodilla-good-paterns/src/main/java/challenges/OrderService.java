@@ -1,14 +1,14 @@
 package challenges;
 
-public class OrderRequest {
+public class OrderService {
 
-    private UserRepo userRepo = new UserRepo();
+    private final UserRepo userRepo = new UserRepo();
 
-    private ProductRepo productRepo = new ProductRepo();
-    private OrderRepository orderRepository = new OrderRepository();
+    private final ProductRepo productRepo = new ProductRepo();
+    private final OrderRepository orderRepository = new OrderRepository();
 
     void createOrder(User user, Product product, int itemAmount) {
-        if (!userRepo.isUserExist(user)) {
+        if (!userRepo.ifUserExist(user)) {
             System.out.println("User doesn't exist");
             return;
         }

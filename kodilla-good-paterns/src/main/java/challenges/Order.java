@@ -1,9 +1,9 @@
 package challenges;
 
 public class Order {
-    private User user;
-    private Product product;
-    private int productQuantity;
+    private final User user;
+    private final Product product;
+    private final int productQuantity;
 
     public Order(User user, Product product, int productAmount) {
         this.user = user;
@@ -11,4 +11,15 @@ public class Order {
         this.productQuantity = productAmount;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
 }

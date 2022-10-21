@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Product {
 
-    private String name;
+    private final String name;
     private int itemQuantity;
 
     public Product(String name) {
