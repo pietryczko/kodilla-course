@@ -5,13 +5,21 @@ import java.util.List;
 
 public class ProductRepo {
 
-    public List<Product> productList = new ArrayList<>();
+    public List<Product> products = new ArrayList<>();
 
-    void addProduct(String productName) {
+    void createProduct(String productName) {
         Product product = new Product(productName);
     }
 
+    void increaseAmount(String productName, int amount) {
+        products.get(products.indexOf(new Product(productName))).increaseAmount(amount);
+    }
+
+    void reduceAmount(String productName, int amount) {
+        products.get(products.indexOf(new Product(productName))).reduceAmount(amount);
+    }
+
     boolean productExist(Product product) {
-        return productList.contains(product);
+        return products.contains(product);
     }
 }

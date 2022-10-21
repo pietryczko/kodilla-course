@@ -1,23 +1,18 @@
 package challenges;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserRepo {
-    private final List<User> userList = new ArrayList<>();
+    private final Map<User, Integer> users = new HashMap<>();
     private int id = 1;
 
-    void createUser(String userName) {
-        userList.add(new User(userName, id));
+    public void createUser(String userName) {
+        users.put(new User(userName), id);
         id++;
     }
 
     boolean ifUserExist(User user) {
-        for (User u : userList) {
-            if (!user.equals(u)) {
-                return true;
-            }
-        }
-        return false;
+        return users.containsKey(user);
     }
 }

@@ -10,11 +10,7 @@ public class OrderRepository {
         orderList.add(order);
     }
 
-    private Order getOrder(Order order) {
-        return orderList.get(orderList.indexOf(order));
-    }
-
-    private void showOrders() {
+    void showOrders() {
         for (Order o : orderList) {
             System.out.println(o);
         }

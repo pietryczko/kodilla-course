@@ -2,10 +2,16 @@ package challenges;
 
 public class OrderService {
 
-    private final UserRepo userRepo = new UserRepo();
+    private final UserRepo userRepo;
 
-    private final ProductRepo productRepo = new ProductRepo();
-    private final OrderRepository orderRepository = new OrderRepository();
+    private final ProductRepo productRepo;
+    private final OrderRepository orderRepository;
+
+    public OrderService(UserRepo userRepo, ProductRepo productRepo, OrderRepository orderRepository) {
+        this.userRepo = userRepo;
+        this.productRepo = productRepo;
+        this.orderRepository = orderRepository;
+    }
 
     void createOrder(User user, Product product, int itemAmount) {
         if (!userRepo.ifUserExist(user)) {
