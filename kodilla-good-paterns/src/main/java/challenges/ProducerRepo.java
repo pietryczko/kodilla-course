@@ -5,18 +5,18 @@ import java.util.List;
 
 public class ProducerRepo {
 
-    private List<Producer> producerList = new ArrayList<>();
+    private List<Producer> producers = new ArrayList<>();
 
     void addProducer(String producerName) {
-        producerList.add(new Producer(producerName));
+        producers.add(new Producer(producerName));
     }
 
     void deleteProducer(String producerName) {
-        producerList.remove(new Producer(producerName));
+        producers.remove(new Producer(producerName));
     }
 
-    void showProducers() {
-        for (Producer producer : producerList) {
+    public void showProducers() {
+        for (Producer producer : producers) {
             System.out.println(producer);
         }
     }

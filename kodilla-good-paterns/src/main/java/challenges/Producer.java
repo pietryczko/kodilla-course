@@ -13,6 +13,29 @@ public class Producer {
     }
 
     @Override
+    public String toString() {
+        return "Producer{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    public void addProduct(Product product) {
+        productList.add(product);
+    }
+
+    public void deleteProduct(String productName) {
+        productList.remove(new Product(productName));
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void process(Product product, int amount) {
+        productList.get(product.reduceAmount(amount));
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -23,28 +46,5 @@ public class Producer {
     @Override
     public int hashCode() {
         return Objects.hash(name, productList);
-    }
-
-    @Override
-    public String toString() {
-        return "Producer{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-
-    void addProduct(Product product) {
-        productList.add(product);
-    }
-
-    void deleteProduct(String productName) {
-        productList.remove(new Product(productName));
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    void process(Producer producer, Product product, int amount) {
-        productList.get(product.reduceAmount(amount));
     }
 }
