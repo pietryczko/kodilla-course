@@ -22,6 +22,9 @@ public class Product {
 
     int reduceAmount(int amount) {
         productQuantity -= amount;
+        if (amount < 0) {
+            throw new IndexOutOfBoundsException();
+        }
         return amount;
     }
 

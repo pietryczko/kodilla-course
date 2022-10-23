@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Producer {
     private final String name;
-    private final List<Product> productList = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
 
     public Producer(String name) {
         this.name = name;
@@ -20,19 +20,24 @@ public class Producer {
     }
 
     public void addProduct(Product product) {
-        productList.add(product);
+        products.add(product);
     }
 
     public void deleteProduct(String productName) {
-        productList.remove(new Product(productName));
+        products.remove(new Product(productName));
     }
 
-    public List<Product> getProductList() {
-        return productList;
+    public Product getProduct(String productName) {
+        return products.get(products.indexOf(new Product(productName)));
+    }
+
+    public List<Product> getProducts() {
+        return products;
     }
 
     public void process(Product product, int amount) {
-        productList.get(product.reduceAmount(amount));
+        products.get(product.reduceAmount(amount));
+        System.out.println("Order complete");
     }
 
     @Override
@@ -40,11 +45,11 @@ public class Producer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producer producer = (Producer) o;
-        return name.equals(producer.name) && productList.equals(producer.productList);
+        return name.equals(producer.name) && products.equals(producer.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, productList);
+        return Objects.hash(name, products);
     }
 }
