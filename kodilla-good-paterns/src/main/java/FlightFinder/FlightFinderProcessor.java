@@ -1,5 +1,7 @@
 package FlightFinder;
 
+import java.util.List;
+
 public class FlightFinderProcessor {
     public static void main(String[] args) {
         FlightsRepo flightsRepo = new FlightsRepo();
@@ -9,9 +11,11 @@ public class FlightFinderProcessor {
         City expectedFlightFrom = new City("Wroclaw");
         City expectedFlightTo = new City("Krakow");
 
-        flightsRepo.getFlights().stream()
-                .filter(flight -> flight.getCityFrom().equals(expectedFlightFrom))
-                .filter(flight -> flight.getCityTo().equals(expectedFlightTo))
-                .forEach(System.out::println);
+        List flightsFrom = flightsRepo.getFlights().stream()
+                .filter(flight -> flight.getCityFrom().equals(expectedFlightFrom)).toList();
+
+        List flightsTo = flightsRepo.getFlights().stream()
+                .filter(flight -> flight.getCityTo().equals(expectedFlightTo)).toList();
+
     }
 }
