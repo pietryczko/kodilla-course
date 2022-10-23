@@ -13,12 +13,12 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    void createOrder(User user, Product product, int itemAmount) {
+    public void createOrder(User user, Product product, int itemAmount) {
         if (!userRepo.ifUserExist(user)) {
             System.out.println("User doesn't exist");
             return;
         }
-        if (!productRepo.productExist(product)) {
+        if (!productRepo.ifProductExist(product)) {
             System.out.println("Product doesn't exist");
             return;
         }

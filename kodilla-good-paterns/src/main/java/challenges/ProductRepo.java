@@ -9,6 +9,7 @@ public class ProductRepo {
 
     void createProduct(String productName) {
         Product product = new Product(productName);
+        products.add(product);
     }
 
     void increaseAmount(String productName, int amount) {
@@ -19,7 +20,7 @@ public class ProductRepo {
         products.get(products.indexOf(new Product(productName))).reduceAmount(amount);
     }
 
-    boolean productExist(Product product) {
+    public boolean ifProductExist(Product product) {
         return products.contains(product);
     }
 }

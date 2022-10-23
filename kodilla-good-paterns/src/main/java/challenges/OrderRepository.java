@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepository {
-    private final List<Order> orderList = new ArrayList<>();
+    private final List<Order> orders = new ArrayList<>();
 
-    void addOrder(Order order) {
-        orderList.add(order);
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 
-    void showOrders() {
-        for (Order o : orderList) {
+    public void showOrders() {
+        for (Order o : orders) {
             System.out.println(o);
         }
     }
