@@ -36,7 +36,7 @@ public class Producer {
     }
 
     public void process(Product product, int amount) {
-        products.get(product.reduceAmount(amount));
+        products.get(products.indexOf(product)).reduceAmount(amount);
         System.out.println("Order complete");
     }
 

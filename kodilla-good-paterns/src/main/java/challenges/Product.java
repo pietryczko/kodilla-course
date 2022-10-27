@@ -16,11 +16,11 @@ public class Product {
                 '}';
     }
 
-    void increaseAmount(int amount) {
+    public void increaseAmount(int amount) {
         productQuantity += amount;
     }
 
-    int reduceAmount(int amount) {
+    public int reduceAmount(int amount) {
         productQuantity -= amount;
         if (amount < 0) {
             throw new IndexOutOfBoundsException();
