@@ -1,43 +1,34 @@
 package challenges;
 
-import java.util.Objects;
-
 public class Product {
+    private String productName;
+    private int productQuantity;
 
-    private final String name;
-    private int itemQuantity;
-
-    public Product(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
-
-    void increaseAmount(int amount) {
-        itemQuantity += amount;
-    }
-
-    void reduceAmount(int amount) {
-        itemQuantity -= amount;
+    public Product(String productName) {
+        this.productName = productName;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return Objects.equals(name, product.name);
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                ", productQuantity=" + productQuantity +
+                '}';
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
+    public void increaseAmount(int amount) {
+        productQuantity += amount;
     }
 
+    public int reduceAmount(int amount) {
+        productQuantity -= amount;
+        if (amount < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return amount;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
 }
