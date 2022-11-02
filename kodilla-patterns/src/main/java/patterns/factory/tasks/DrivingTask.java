@@ -1,10 +1,11 @@
 package patterns.factory.tasks;
 
-public class DrivingTask implements Task{
+public class DrivingTask implements Task {
 
     private String taskName;
     private String where;
     private String using;
+    private boolean isExecuted = false;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
@@ -14,16 +15,16 @@ public class DrivingTask implements Task{
 
     @Override
     public void executeTask() {
-
+        isExecuted = true;
     }
 
     @Override
-    public void getTaskName() {
-
+    public String getTaskName() {
+        return taskName;
     }
 
     @Override
-    public void isTaskExecuted() {
-
+    public boolean isTaskExecuted() {
+        return isExecuted;
     }
 }
