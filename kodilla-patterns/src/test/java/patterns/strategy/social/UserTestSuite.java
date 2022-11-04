@@ -30,9 +30,9 @@ public class UserTestSuite {
         User john = new ZGeneration("John Pete");
 
         //When
-        String johnPost = john.sharePost();
+        john.sharePost();
         john.setSocialPublisher(new TwitterPublisher());
-        johnPost = john.sharePost();
+        String johnPost = john.sharePost();
 
         //Then
         assertEquals("You post a tweet", johnPost);
