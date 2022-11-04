@@ -8,8 +8,9 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LibraryTestSuite {
+
     @Test
-    void testGetBook() {
+    void testGetBook() throws CloneNotSupportedException{
         Library library = new Library("Test Library");
         IntStream.iterate(1, n -> n + 1)
                 .limit(10)
@@ -24,11 +25,18 @@ public class LibraryTestSuite {
             System.out.println(e);
         }
 
+        Library clonedLibrary1 = null;
+        try {
+            clonedLibrary = library.shallowCopy();
+        } catch (CloneNotSupportedException e) {
+            throw new CloneNotSupportedException();
+        }
+
         Library deepClonedLibrary = null;
         try {
             deepClonedLibrary = library.deepCopy();
         } catch (CloneNotSupportedException e) {
-            System.out.println(e);
+            throw new CloneNotSupportedException();
         }
 
         //When
