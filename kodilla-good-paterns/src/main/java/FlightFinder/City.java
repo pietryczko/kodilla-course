@@ -3,15 +3,15 @@ package FlightFinder;
 import java.util.Objects;
 
 public class City {
-    private String value;
+    private final String cityName;
 
     public City(String value) {
-        this.value = value;
+        this.cityName = value;
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return cityName.hashCode();
     }
 
     @Override
@@ -19,11 +19,11 @@ public class City {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         City city1 = (City) o;
-        return Objects.equals(value, city1.value);
+        return Objects.equals(cityName, city1.cityName);
     }
 
     @Override
     public String toString() {
-        return this.value;
+        return this.cityName;
     }
 }

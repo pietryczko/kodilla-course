@@ -1,19 +1,16 @@
 package FlightFinder;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class FlightsRepo {
-    private Scanner scanner = new Scanner(System.in);
-    private List<Flight> flights = new ArrayList<>();
+    private final Set<Flight> flights = new HashSet<>();
 
-    void addFlight(String flightFrom, String flightTo) {
-        Flight flight = new Flight(new City(flightFrom), new City(flightTo));
+    void addFlight(String departure, String arrival) {
+        Flight flight = new Flight(new City(departure), new City(arrival));
         flights.add(flight);
     }
 
-    public List<Flight> getFlights() {
+    public Set<Flight> getFlights() {
         return flights;
     }
 }
