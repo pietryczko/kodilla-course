@@ -20,8 +20,14 @@ public class BigmacTestSuite {
 
         //When
         int howManyIngredients = bigmac.getIngredients().size();
+        int howManyBurgers = bigmac.getBurgers();
+        String bunType = bigmac.getBun();
+        String sauceType = bigmac.getSauce();
 
         //Then
         assertEquals(2, howManyIngredients);
+        assertEquals(2, howManyBurgers);
+        assertEquals("Sesame", bunType);
+        assertEquals("mayo", sauceType);
     }
 }
