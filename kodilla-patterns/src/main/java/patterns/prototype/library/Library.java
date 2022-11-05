@@ -7,7 +7,7 @@ import java.util.Set;
 
 public final class Library extends Prototype<Library> {
 
-    final private String name;
+    private final String name;
     private Set<Book> books = new HashSet<>();
 
     public Library shallowCopy() throws CloneNotSupportedException {
