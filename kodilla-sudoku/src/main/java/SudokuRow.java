@@ -1,12 +1,20 @@
 import java.util.ArrayList;
 
 public class SudokuRow {
-    ArrayList<SudokuElement> sudokuRow = new ArrayList<>();
+    private final ArrayList<SudokuElement> sudokuElements = new ArrayList<>();
 
-    public SudokuRow createRow(int rowNumber) {
-        for (int i = 0; i < 9; i++) {
-            sudokuRow.add(new SudokuElement(SudokuElement.EMPTY, rowNumber, i));
+    public SudokuRow(int x) {
+        createRow(x);
+    }
+
+    private ArrayList<SudokuElement> createRow(int x) {
+        for (int i = 0; i < x; i++) {
+            sudokuElements.add(new SudokuElement(x));
         }
-        return this;
+        return sudokuElements;
+    }
+
+    public ArrayList<SudokuElement> getSudokuElements() {
+        return sudokuElements;
     }
 }
