@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class SudokuElement {
     final public static int EMPTY = -1;
@@ -14,6 +13,10 @@ public class SudokuElement {
         for (int i = 0; i < x; i++) {
             possibleNumbers.add(i+1);
         }
+    }
+
+    public ArrayList<Integer> getPossibleNumbers() {
+        return possibleNumbers;
     }
 
     public void removePossibleNumber(int value) {

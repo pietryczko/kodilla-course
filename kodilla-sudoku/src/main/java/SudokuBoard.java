@@ -18,7 +18,6 @@ public class SudokuBoard {
         removeNumberFromRow(y, x, value);
         removeNumberFromColumn(y, x, value);
         removeNumberFromBox(y, x, value);
-
     }
 
     private void removeNumberFromRow(int y, int x, int value) {
@@ -38,7 +37,7 @@ public class SudokuBoard {
         int boxColumn = y - y % 3;
         for (int i = boxRow; i < boxRow + 3; i++) {
             for (int j = boxColumn; j < boxColumn + 3; j++) {
-                gameBoard.get(i).getSudokuElements().get(j).removePossibleNumber(value);
+                gameBoard.get(j).getSudokuElements().get(i).removePossibleNumber(value);
             }
         }
     }
