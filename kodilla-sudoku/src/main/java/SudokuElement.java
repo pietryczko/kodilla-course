@@ -3,7 +3,7 @@ import java.util.List;
 
 public class SudokuElement {
     final public static int EMPTY = -1;
-    private ArrayList<Integer> possibleNumbers = new ArrayList<>();
+    private final ArrayList<Integer> possibleNumbers = new ArrayList<>();
     private int value = EMPTY;
 
     public SudokuElement(int x) {
@@ -22,7 +22,7 @@ public class SudokuElement {
 
     public void setValue(int value) {
         System.out.println(possibleNumbers);
-        if (possibleNumbers.contains(Integer.valueOf(value))) {
+        if (possibleNumbers.contains(value)) {
             this.value = value;
         } else {
             System.out.println("no");

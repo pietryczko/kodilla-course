@@ -7,11 +7,10 @@ public class SudokuRow {
         createRow(x);
     }
 
-    private ArrayList<SudokuElement> createRow(int x) {
+    private void createRow(int x) {
         for (int i = 0; i < x; i++) {
             sudokuElements.add(new SudokuElement(x));
         }
-        return sudokuElements;
     }
 
     public ArrayList<SudokuElement> getSudokuElements() {
