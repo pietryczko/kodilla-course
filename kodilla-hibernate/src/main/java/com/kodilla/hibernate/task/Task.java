@@ -2,9 +2,7 @@ package com.kodilla.hibernate.task;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -16,13 +14,13 @@ public class Task {
     private Date created;
     private int duration;
 
-    public Task() {
-    }
-
     public Task(String description, int duration) {
         this.description = description;
         this.created = new Date();
         this.duration = duration;
+    }
+
+    public Task() {
     }
 
     @Id
