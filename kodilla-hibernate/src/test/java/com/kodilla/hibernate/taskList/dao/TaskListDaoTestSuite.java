@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.taskList.dao;
 
-import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.tasklist.TaskList;
 import com.kodilla.hibernate.tasklist.dao.TaskListDao;
 import org.junit.jupiter.api.Test;
@@ -34,4 +33,6 @@ public class TaskListDaoTestSuite {
         int id = readTaskList.get(0).getId();
         taskListDao.deleteById(id);
     }
+
+
 }
