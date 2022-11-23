@@ -26,16 +26,14 @@ public class InvoiceDaoTestSuite {
         //Given
         Product product = new Product("Test product");
         productDao.save(product);
-        Item item = new Item(new BigDecimal(100), 10, new BigDecimal(100));
-        item.setProduct(product);
-        itemDao.save(item);
-        int itemId = item.getId();
 
         Invoice invoice = new Invoice("143256");
-        invoice.getItems().add(item);
-
+        Item item = new Item(new BigDecimal(100), 10, new BigDecimal(100));
+        item.setProduct(product);
+        item.setInvoice(invoice);
 
         //When
+        invoice.getItems().add(item);
         invoiceDao.save(invoice);
         int invoiceId = invoice.getId();
 
@@ -43,7 +41,8 @@ public class InvoiceDaoTestSuite {
         assertNotEquals(0, invoiceId);
 
         //CleanUp
-//        invoiceDao.deleteById(invoiceId);
-//        itemDao.deleteById(itemId);
+        itemDao.deleteById(item.getId());
+        invoiceDao.deleteById(invoiceId);
+        productDao.deleteById(product.getId());
     }
 }
