@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Company.getCompanyBy3FirstLetters",
+        query = "FROM Company WHERE (name, 3) = :NAME"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
