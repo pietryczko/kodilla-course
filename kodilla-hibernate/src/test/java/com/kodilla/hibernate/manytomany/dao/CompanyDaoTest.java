@@ -64,27 +64,27 @@ class CompanyDaoTestSuite {
     }
 
     @Test
-    void testFindBy() {
-        Employee johnSmith = new Employee("John", "Smith");
+    void testGetEmployeeByLastName() {
+        //Given
         Company softwareMachine = new Company("Software Machine");
-        softwareMachine.getEmployees().add(johnSmith);
-        johnSmith.getCompanies().add(softwareMachine);
+
+        //When
+        List<Company> companyBy3FirstLetters = companyDao.getCompanyBy3FirstLetters("Sof");
+
+        //Then
+        assertEquals(1, companyBy3FirstLetters.size());
+
+    }
+
+    @Test
+    void testGetEmployeeBy3FirstLetters() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
 
         //When
         List<Employee> employeeByLastName = employeeDao.getEmployeeByLastName("Smith");
-        List<Company> companyBy3FirstLetters = companyDao.getCompanyBy3FirstLetters("Sof");
-        companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
 
         //Then
         assertEquals(1, employeeByLastName.size());
-        assertEquals(1, companyBy3FirstLetters.size());
-
-        //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-        } catch (Exception e) {
-            //do nothing
-        }
     }
 }
