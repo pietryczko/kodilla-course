@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -13,6 +15,7 @@ class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -58,5 +61,30 @@ class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
+    }
+
+    @Test
+    void testGetEmployeeByLastName() {
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+
+        //When
+        List<Company> companyBy3FirstLetters = companyDao.getCompanyBy3FirstLetters("Sof");
+
+        //Then
+        assertEquals(1, companyBy3FirstLetters.size());
+
+    }
+
+    @Test
+    void testGetEmployeeBy3FirstLetters() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+
+        //When
+        List<Employee> employeeByLastName = employeeDao.getEmployeeByLastName("Smith");
+
+        //Then
+        assertEquals(1, employeeByLastName.size());
     }
 }
