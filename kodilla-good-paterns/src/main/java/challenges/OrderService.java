@@ -22,7 +22,7 @@ public class OrderService {
             System.out.println("Product doesn't exist");
             return;
         }
-        if (product.getItemQuantity() < itemAmount) {
+        if (product.getProductQuantity() < itemAmount) {
             System.out.println("Invalid amount of product");
             return;
         }

@@ -33,6 +33,7 @@ public class Task {
     private String description;
     private Date created;
     private int duration;
+    private TaskList taskList;
 
     public Task(String description, int duration) {
         this.description = description;
@@ -65,6 +66,11 @@ public class Task {
     @Column(name = "DURATION")
     public int getDuration() {
         return duration;
+    }
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    public TaskList getTaskList() {
+        return taskList;
     }
 
     private void setId(int id) {
