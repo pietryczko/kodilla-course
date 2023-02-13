@@ -6,6 +6,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Company.findCompanyByNameFragment",
+        query = "FROM Company WHERE name LIKE concat('%',:NAMEPART,'%' )"
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

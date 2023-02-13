@@ -19,9 +19,9 @@ public class EmployeeFacade {
         this.employeeDao = employeeDao;
     }
 
-    public List<Employee> findEmployeeByName(String employeeName) throws NoDataException {
+    public List<Employee> findEmployeeByName(String employeeLastName) throws NoDataException {
 
-        List<Employee> employees = employeeDao.findEmployeeByFirstname(employeeName);
+        List<Employee> employees = employeeDao.retrieveEmployeeByLastName(employeeLastName);
 
         if (employees.size() == 0) {
             LOGGER.error(NoDataException.ERROR_EMPLOYEE_NOT_FOUND);

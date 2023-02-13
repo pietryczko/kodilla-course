@@ -21,7 +21,7 @@ public class CompanyFacade {
 
     public List<Company> findCompanyByName(String companyName) throws NoDataException {
 
-        List<Company> companies = companyDao.findCompanyByName(companyName);
+        List<Company> companies = companyDao.findCompanyByNameFragment(companyName);
 
         if (companies.size()==0){
             LOGGER.error(NoDataException.ERROR_COMPANY_NOT_FOUND);
