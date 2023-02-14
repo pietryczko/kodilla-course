@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.kodilla.spring'
+group = 'com.kodilla'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
 }
 
 tasks.named('test') {
