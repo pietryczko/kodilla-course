@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes = Calculator.class)
+@SpringBootTest
 class CalculatorTestSuite {
 
     private static final Logger LOGGER =
