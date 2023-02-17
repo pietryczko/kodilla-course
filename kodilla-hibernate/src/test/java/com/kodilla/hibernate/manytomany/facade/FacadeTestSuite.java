@@ -27,12 +27,12 @@ public class FacadeTestSuite {
     @Test
     public void testCompanyFacadeFindCompanyByName() throws NoDataException {
         //Given
-        Company company = new Company("Test Company");
-        companyDao.save(company);
-        Company company1 = new Company("Test1 Company");
+        Company company1 = new Company("Test Company");
         companyDao.save(company1);
-        Company company2 = new Company("CD Projekt");
+        Company company2 = new Company("Test1 Company");
         companyDao.save(company2);
+        Company company3 = new Company("CD Projekt");
+        companyDao.save(company3);
 
         //When
         List<Company> companies = companyFacade.findCompanyByName("Test");
@@ -43,20 +43,20 @@ public class FacadeTestSuite {
         Assertions.assertEquals(1, oneCompany.size());
 
         //CleanUp
-        companyDao.delete(company);
         companyDao.delete(company1);
         companyDao.delete(company2);
+        companyDao.delete(company3);
     }
 
     @Test
     public void testFoundEmployeeByLastName() throws NoDataException {
         //Given
-        Employee employee = new Employee("Jan", "Kowalski");
-        Employee employee1 = new Employee("Jan", "Nowak");
-        Employee employee2 = new Employee("Jan", "Kowalczyk");
-        employeeDao.save(employee);
+        Employee employee1 = new Employee("Jan", "Kowalski");
+        Employee employee2 = new Employee("Jan", "Nowak");
+        Employee employee3 = new Employee("Jan", "Kowalczyk");
         employeeDao.save(employee1);
         employeeDao.save(employee2);
+        employeeDao.save(employee3);
 
         //When
         List<Employee> oneEmployee = employeeFacade.findEmployeeByName("Nowak");
@@ -67,8 +67,8 @@ public class FacadeTestSuite {
         Assertions.assertEquals(2, twoEmployees.size());
 
         //CleanUp
-        employeeDao.delete(employee);
         employeeDao.delete(employee1);
         employeeDao.delete(employee2);
+        employeeDao.delete(employee3);
     }
 }
